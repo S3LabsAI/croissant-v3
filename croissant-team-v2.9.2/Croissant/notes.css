@@ -1,0 +1,25 @@
+main.nmain{max-width:860px}
+.note{background:#1c1d20;border:1px solid #313337;border-radius:12px;margin:0 0 16px;overflow:hidden}
+.note.done{opacity:.6}
+.nh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;background:#242528;border-bottom:1px solid #313337}
+.nh b{font-size:15px}
+.nh .sp{flex:1}
+.why{display:flex;gap:8px;flex-wrap:wrap;padding:10px 16px 0}
+.chip{font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:rgba(47,191,113,.14);color:#2fbf71}
+.chip.k{background:rgba(79,209,197,.12);color:#4fd1c5}
+.nb{padding:10px 16px 16px;display:grid;gap:8px}
+.nb label{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#a6a9ae}
+.nb input,.nb textarea{width:100%;font:inherit;font-size:14px;color:#ededee;background:#121314;border:1px solid #3e4045;border-radius:8px;padding:8px 10px}
+.nb input:focus,.nb textarea:focus{outline:none;border-color:#4fd1c5}
+.nb textarea{min-height:200px;line-height:1.5;resize:vertical}
+.acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.acts .sp{flex:1}
+.status{font-size:12.5px}
+.warnTo{color:#e0a93b;font-size:12.5px}
+.seg{display:inline-flex;border:1px solid #3e4045;border-radius:8px;overflow:hidden}
+.seg button{border:0;border-radius:0;background:transparent;padding:5px 10px;font-size:12.5px}
+.seg button+button{border-left:1px solid #3e4045}
+.seg button.on{background:#4fd1c5;color:#06202b;font-weight:600}
+.rhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px;font-size:13.5px;color:#c9cbcf}
+.rhead .sp{flex:1}
+@media (max-width:640px){header{flex-wrap:wrap}}

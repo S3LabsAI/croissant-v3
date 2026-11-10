@@ -1,0 +1,47 @@
+*{box-sizing:border-box}
+html,body{margin:0;background:#121314;color:#ededee;font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+[hidden]{display:none!important}
+a{color:#4fd1c5}
+button,.btn{font:inherit;font-size:13px;color:#ededee;background:#242528;border:1px solid #3e4045;border-radius:8px;padding:6px 12px;cursor:pointer;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{border-color:#4fd1c5;color:#4fd1c5}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.pri{background:#4fd1c5;border-color:#4fd1c5;color:#06202b;font-weight:600}
+button.pri:hover{color:#06202b;filter:brightness(1.08)}
+.sp{flex:1}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:12px 24px;background:linear-gradient(180deg,#1b1c1f,#121314);border-bottom:1px solid #313337}
+.ttl b{font-size:16px;display:block}
+.ttl small{color:#a6a9ae;font-size:12.5px}
+main{max-width:1040px;margin:0 auto;padding:18px 16px 60px}
+.ban{border-radius:10px;padding:10px 14px;margin:0 0 10px;font-size:13.5px}
+.ban.err{background:rgba(226,96,63,.14);color:#f3a08c;border:1px solid rgba(226,96,63,.35)}
+.ban.warn{background:rgba(224,169,59,.12);color:#e9bf6a;border:1px solid rgba(224,169,59,.3)}
+.ban.info{background:rgba(79,209,197,.08);color:#a6e6df;border:1px solid rgba(79,209,197,.25)}
+.ban b{color:#ededee}
+.card{background:#1c1d20;border:1px solid #313337;border-radius:12px;margin:0 0 16px;overflow:hidden}
+.card h2{font-size:14px;margin:0;padding:11px 14px;background:#242528;border-bottom:1px solid #313337;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.card h2 small{color:#a6a9ae;font-weight:400;font-size:12px}
+.card h2 a{margin-left:auto;font-size:12.5px;font-weight:400}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#a6a9ae;text-align:left;padding:8px 10px;border-bottom:1px solid #313337;font-weight:600;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid #26272b;vertical-align:middle;font-size:13px}
+tr:last-child td{border-bottom:0}
+.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.c{text-align:center;width:34px}
+input[type=checkbox]{accent-color:#4fd1c5;width:16px;height:16px}
+.tag{font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:999px;white-space:nowrap;margin-left:6px}
+.tag.bad{background:rgba(226,96,63,.18);color:#f08a72}
+.tag.good{background:rgba(47,191,113,.16);color:#2fbf71}
+tr.culprit td{background:rgba(226,96,63,.05)}
+tr.prop td{background:rgba(47,191,113,.05)}
+.prop-to{color:#2fbf71;font-weight:600}
+.muted{color:#7c7f86}
+.pad{padding:16px}
+.small{font-size:12px}
+#applyBar{position:sticky;bottom:0;display:flex;gap:14px;align-items:center;background:#1c1d20;border:1px solid #3e4045;border-radius:12px;padding:12px 14px;margin-top:6px;box-shadow:0 -8px 24px rgba(0,0,0,.35)}
+#applyBar .note{color:#a6a9ae;font-size:12.5px;flex:1}
+#results .res{padding:6px 2px;font-size:13px}
+.ok{color:#2fbf71}.bad{color:#f08a72}.warn{color:#e0a93b}
+h3{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#a6a9ae;margin:26px 0 8px}
+#log .li{padding:6px 0;border-bottom:1px solid #26272b;font-size:13px;color:#c9cbcf}
+@media (max-width:640px){header{padding:10px 12px}.ttl b{font-size:14px}}

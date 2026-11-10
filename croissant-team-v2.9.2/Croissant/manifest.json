@@ -1,0 +1,96 @@
+{
+  "manifest_version": 3,
+  "name": "Croissant",
+  "short_name": "Pace Alerts",
+  "version": "2.9.2",
+  "description": "Alerts when your GOAL accounts cross budget thresholds or are on track to cap early, flags no-spend, underpacing and conversion drops, and saves a daily report.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Croissant",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "bg.js"
+  },
+  "permissions": [
+    "alarms",
+    "storage",
+    "unlimitedStorage",
+    "notifications",
+    "downloads",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.portal.checkoutgoal.com/*",
+    "https://hooks.slack.com/*",
+    "https://www.admin.checkoutgoal.com/*",
+    "https://admin.checkoutgoal.com/*",
+    "https://www.portal.checkoutgoal.com/*",
+    "https://portal.checkoutgoal.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.admin.checkoutgoal.com/*",
+        "https://admin.checkoutgoal.com/*",
+        "https://www.portal.checkoutgoal.com/*",
+        "https://portal.checkoutgoal.com/*"
+      ],
+      "js": [
+        "token.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.portal.checkoutgoal.com/*",
+        "https://portal.checkoutgoal.com/*",
+        "https://www.admin.checkoutgoal.com/*",
+        "https://admin.checkoutgoal.com/*"
+      ],
+      "js": [
+        "hook.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://www.admin.checkoutgoal.com/*",
+        "https://admin.checkoutgoal.com/*",
+        "https://www.portal.checkoutgoal.com/*",
+        "https://portal.checkoutgoal.com/*"
+      ],
+      "js": [
+        "csv.js",
+        "popup.js",
+        "panel.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "popup.html",
+        "popup.css",
+        "icons/*"
+      ],
+      "matches": [
+        "https://www.admin.checkoutgoal.com/*",
+        "https://admin.checkoutgoal.com/*",
+        "https://www.portal.checkoutgoal.com/*",
+        "https://portal.checkoutgoal.com/*"
+      ]
+    }
+  ]
+}
