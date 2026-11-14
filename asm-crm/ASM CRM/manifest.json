@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Croissant",
-  "short_name": "Pace Alerts",
+  "name": "ASM CRM",
+  "short_name": "ASM CRM",
   "version": "2.9.2",
   "description": "Alerts when your GOAL accounts cross budget thresholds or are on track to cap early, flags no-spend, underpacing and conversion drops, and saves a daily report.",
   "icons": {
@@ -11,7 +11,7 @@
     "128": "icons/icon128.png"
   },
   "action": {
-    "default_title": "Croissant",
+    "default_title": "ASM CRM",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",

@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Croissant v2.9.2</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥐</text></svg>">
+<title>ASM CRM v2.9.2</title>
+<link rel="icon" href="ASM%20CRM/icons/icon32.png">
 <style>
 :root{--bg:#121314;--card:#1c1d20;--card2:#242528;--line:#313337;--ink:#ededee;--mut:#a6a9ae;--dim:#7c7f86;--teal:#4fd1c5;--green:#2fbf71;--amber:#e0a93b;--red:#e2603f}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:860px;margin:0 auto;padding:40px 16px 64px}
 .hero{display:flex;gap:16px;align-items:center;margin-bottom:8px}
-.hero .c{font-size:44px;line-height:1}
+.hero .c{width:44px;height:44px;flex:none}
 h1{font-size:28px;margin:0;letter-spacing:-.01em}
 .ver{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;color:#06202b;background:var(--teal);border-radius:999px;padding:2px 9px;vertical-align:4px}
 .lede{color:var(--mut);margin:6px 0 28px}
@@ -35,7 +35,7 @@ ul.log{margin:0;padding-left:20px;color:var(--mut);font-size:14px}ul.log li{marg
 </head>
 <body>
 <main>
-  <div class="hero"><span class="c">🥐</span><div><h1>Croissant <span class="ver">v2.9.2</span></h1></div></div>
+  <div class="hero"><img class="c" src="ASM%20CRM/icons/icon128.png" alt="" width="44" height="44"><div><h1>ASM CRM <span class="ver">v2.9.2</span></h1></div></div>
   <p class="lede">A Chrome extension for your GOAL accounts: budget pace alerts, conversion flags, a source review with bid raises you approve, client notes and Friday summaries, and a live panel in the corner of every GOAL page.</p>
 
   <section class="card">
@@ -46,13 +46,13 @@ ul.log{margin:0;padding-left:20px;color:var(--mut);font-size:14px}ul.log li{marg
   <section class="card">
     <h2>Install (about 2 minutes)</h2>
     <ol>
-      <li>Unzip <a href="budget-pace-alerts-v2.9.2.zip" style="color:var(--teal)">budget-pace-alerts-v2.9.2.zip</a> somewhere it can stay (Chrome runs it from there).</li>
+      <li>Unzip <a href="asm-crm-v2.9.2.zip" style="color:var(--teal)">asm-crm-v2.9.2.zip</a> somewhere it can stay (Chrome runs it from there).</li>
       <li>In Chrome, open <code>chrome://extensions</code> and turn on <b>Developer mode</b> (top right).</li>
-      <li>Click <b>Load unpacked</b> and choose the <b>Croissant</b> folder you unzipped.</li>
-      <li>Pin the croissant from the puzzle-piece icon, then open the GOAL admin dashboard once to connect it.</li>
-      <li>Click the croissant, open <b>Settings</b>, and under Client notes put your name in <b>Sign-off</b>.</li>
+      <li>Click <b>Load unpacked</b> and choose the <b>ASM CRM</b> folder you unzipped.</li>
+      <li>Pin ASM CRM from the puzzle-piece icon, then open the GOAL admin dashboard once to connect it.</li>
+      <li>Click the ASM CRM icon, open <b>Settings</b>, and under Client notes put your name in <b>Sign-off</b>.</li>
     </ol>
-    <div class="note">If the account count doesn't match GOAL, put your Account Manager ID in Settings (the number after "value" in the Clients page link once you filter to yourself). New versions install themselves when their files are copied into the same folder.</div>
+    <div class="note">If the account count doesn't match GOAL, put your Account Manager ID in Settings (the number after "value" in the Clients page link once you filter to yourself). New versions install themselves when their files are copied into the same folder. Coming from Croissant? Copy the new files into your existing Croissant folder instead of loading a new one: Chrome ties your settings and history to that folder.</div>
   </section>
 
   <section class="card">

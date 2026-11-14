@@ -1,4 +1,4 @@
-// Floating Croissant panel, flush in the bottom-right corner of GOAL pages, like the original bookmarklet:
+// Floating ASM CRM panel, flush in the bottom-right corner of GOAL pages, like the original bookmarklet:
 // 470px wide, grows with its content up to 72% of the window, live numbers from the extension's checks.
 // "-" shrinks it to a croissant pill; "x" hides it on this page until reload. Off switch: Settings, Floating panel.
 (function () {
@@ -68,7 +68,7 @@
       '.bpw-root{width:720px!important;max-width:100vw;height:calc(100vh - 64px)!important;text-align:left;line-height:1.4;letter-spacing:normal}' +
       '.bpw-root #rows td{padding-top:5px!important;padding-bottom:5px!important}.bpw-root .bar{margin-top:3px!important}.bpw-root table{font-size:inherit}.bpw-root input,.bpw-root select,.bpw-root button{font-family:inherit}</style>' +
       '<div class="wrap"><div class="box" id="box"><div class="bpw-root panel">' + v.body + '</div></div>' +
-      '<div class="pill" id="pill" hidden title="Open Croissant"></div></div>';
+      '<div class="pill" id="pill" hidden title="Open ASM CRM"></div></div>';
     (document.body || document.documentElement).appendChild(host);
     root.querySelector('#pill').onclick = function () { ui.min = false; saveUi(); render(); };
     self.BPW_UI(root, {

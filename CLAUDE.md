@@ -4,25 +4,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Croissant, formerly Budget Pace Alerts, is a Manifest V3 Chrome extension for account managers on the GOAL ad platform at checkoutgoal.com. It polls GOAL every 5 minutes, alerts on budget pace and conversion problems, and drafts client emails for the account manager to send.
+ASM CRM, formerly Croissant and before that Budget Pace Alerts, is a Manifest V3 Chrome extension for account managers on the GOAL ad platform at checkoutgoal.com. It polls GOAL every 5 minutes, alerts on budget pace and conversion problems, and drafts client emails for the account manager to send.
 
-All source lives in `croissant-team-v2.9.2/Croissant/`. That folder is the shipped v2.9.2 team build, and Chrome loads it as-is. `croissant-team-v2.9.2/Croissant - Install.html` is the install page that ships with the zip. The first git commit holds the v2.9.2 build as shipped, so a diff against it shows every change made since.
+All source lives in `asm-crm/ASM CRM/`. That folder is the shipped v2.9.2 team build, and Chrome loads it as-is. Its path has no version in it, so Chrome keeps the same extension ID and stored data across versions. `asm-crm/ASM CRM - Install.html` is the install page that ships with the zip. The first git commit holds the v2.9.2 build as shipped under its old name and path, `croissant-team-v2.9.2/Croissant/`, so a diff against it shows every change made since.
 
-`Croissant/README.txt` is the user manual and the closest thing to a spec. It states every threshold, alert rule and page behavior in plain language. Read the relevant section before changing behavior, and update it in the same change.
+`ASM CRM/README.txt` is the user manual and the closest thing to a spec. It states every threshold, alert rule and page behavior in plain language. Read the relevant section before changing behavior, and update it in the same change.
 
 ## Commands
 
 There is no build step, package manager, linter or test suite. A syntax check is the only automated check.
 
 ```bash
-node --check croissant-team-v2.9.2/Croissant/bg.js
+node --check "asm-crm/ASM CRM/bg.js"
 ```
 
 ```bash
-for f in croissant-team-v2.9.2/Croissant/*.js; do node --check "$f"; done
+for f in "asm-crm/ASM CRM"/*.js; do node --check "$f"; done
 ```
 
-To run it, open `chrome://extensions`, turn on Developer mode, click Load unpacked and pick the `Croissant` folder. Then open admin.checkoutgoal.com once so the extension picks up the GOAL sign-in.
+To run it, open `chrome://extensions`, turn on Developer mode, click Load unpacked and pick the `ASM CRM` folder. Then open admin.checkoutgoal.com once so the extension picks up the GOAL sign-in.
 
 After an edit, click the reload arrow on the extension's card. On install or update, `bg.js` re-injects `csv.js`, `popup.js` and `panel.js` into open GOAL tabs. Refresh those tabs to pick up changes to `token.js` and `hook.js`.
 
@@ -30,7 +30,7 @@ After an edit, click the reload arrow on the extension's card. On install or upd
 
 To debug, click "service worker" on the extension's card for the background console. There, `chrome.storage.local.get(null, console.log)` dumps all state and `poll(true)` forces a full poll, roster and history refresh included.
 
-The version string appears in `manifest.json`, line 1 of `README.txt`, and the title, heading and zip link of `Croissant - Install.html`. The zip link still uses the old `budget-pace-alerts-` filename.
+The version string appears in `manifest.json`, line 1 of `README.txt`, and the title, heading and zip link of `ASM CRM - Install.html`.
 
 ## Code style
 

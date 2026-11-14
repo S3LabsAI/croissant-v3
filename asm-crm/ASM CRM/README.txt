@@ -1,13 +1,13 @@
-Croissant v2.9.2 (Chrome extension, formerly Budget Pace Alerts)
+ASM CRM v2.9.2 (Chrome extension, formerly Croissant and Budget Pace Alerts)
 
 INSTALL (one time, about a minute)
 1. Unzip this folder somewhere it can stay (for example Documents). Chrome runs it from there, so don't delete it.
 2. In Chrome, go to chrome://extensions and turn on "Developer mode" (top right).
-3. Click "Load unpacked" and pick the "Croissant" folder.
-4. Click the puzzle-piece icon in the toolbar and pin Croissant so the croissant stays visible.
+3. Click "Load unpacked" and pick the "ASM CRM" folder.
+4. Click the puzzle-piece icon in the toolbar and pin ASM CRM so its icon stays visible.
 5. Open the GOAL admin dashboard (admin.checkoutgoal.com) once. That connects the extension to your existing GOAL sign-in.
 6. Allow notifications if Chrome or macOS asks.
-7. Click the croissant, open Settings, and under Client notes put your name in Sign-off (it signs the client emails).
+7. Click the ASM CRM icon, open Settings, and under Client notes put your name in Sign-off (it signs the client emails).
 
 WHO IT TRACKS
 Your Active accounts in GOAL: the same list as the admin Clients page filtered to Status: Active and Account Manager: you.
@@ -16,13 +16,15 @@ Settings, Account manager (it's the number in the Clients page URL after filteri
 The popup's totals row shows how many active accounts it's tracking, and how many have every campaign paused.
 
 UPDATING FROM AN EARLIER VERSION
-Replace the folder's contents with this version, then click the reload arrow on Croissant in chrome://extensions.
+Replace the folder's contents with this version, then click the reload arrow on ASM CRM in chrome://extensions.
 Chrome may ask to allow the new permissions (downloads for the daily report, and Slack). Your settings and history stay.
+Coming from Croissant: copy the new files into your existing Croissant folder rather than loading the ASM CRM folder as a
+new extension. Chrome ties your settings and history to the folder, so a new folder starts empty.
 
 WHAT IT DOES
 Runs in the background every 5 minutes while Chrome is open. No GOAL tab needs to stay open.
 
-Badge on the croissant
+Badge on the toolbar icon
 - Red number = accounts at 100%+ of daily budget. Amber "!" = something flagged. Grey "?" = open GOAL admin to reconnect.
 
 Budgets
@@ -53,11 +55,11 @@ and leads (Marketplace shows leads won, e.g. "8 of 15").
 
 FLOATING PANEL
 The panel sits flush in the bottom-right corner of every GOAL admin and portal page and shows the full view, exactly
-what the toolbar croissant shows (banners, totals, filters, search, Conv. and CPL, campaign rows, Settings, exports).
+what the toolbar icon shows (banners, totals, filters, search, Conv. and CPL, campaign rows, Settings, exports).
 - "-" minimizes it to a small croissant pill showing today's spend, how many accounts are at 100% and 75%+, and flags.
   Click the pill to open it again. Minimized or open is remembered across GOAL tabs.
 - "x" hides it on that page until you reload.
-- Turn it off under Settings, Floating panel. The toolbar croissant popup works as before.
+- Turn it off under Settings, Floating panel. The toolbar popup works as before.
 
 SELF-UPDATING (new in 2.8)
 When a newer version's files are put in this folder, the extension notices within about 5 minutes and reloads itself.

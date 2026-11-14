@@ -1,4 +1,4 @@
-// Croissant: background worker.
+// ASM CRM: background worker.
 // It reads spend, account lists, campaign budgets and source stats from GOAL. The one thing it can change is a
 // source's bid multiplier, and only after you approve it on the Sources review page (see sources.js).
 // It never changes base bids, daily limits or anything else.
@@ -399,7 +399,7 @@ async function evaluate(spend, opts) {
 }
 function al(r, title, msg, slack, kind) { return { id: 'acct:' + r.id + ':' + Date.now() + ':' + Math.random().toString(36).slice(2, 6), title: title, msg: msg, slack: slack, r: r, kind: kind || 'issue' }; }
 // Conversion alerts open the Sources review page when clicked.
-function cvrId(a) { a.id = a.id.replace(/^acct:/, 'cvr:'); a.msg += ' Click to review sources.'; a.slackMsg = ' Review sources in the Croissant extension.'; return a; }
+function cvrId(a) { a.id = a.id.replace(/^acct:/, 'cvr:'); a.msg += ' Click to review sources.'; a.slackMsg = ' Review sources in the ASM CRM extension.'; return a; }
 function mix(rows) { var m = { live: 0, captured: 0, snapshot: 0, manual: 0 }; rows.forEach(function (r) { if (r.bud > 0 && m[r.budSrc] != null) m[r.budSrc]++; }); return m; }
 function short(n) { return n.length > 44 ? n.slice(0, 42) + '...' : n; }
 function isFlagged(r) { return !!(r.flag || r.cflag || r.campFlags); }
@@ -434,7 +434,7 @@ async function deliver(alerts, s, today) {
     await set({ roundup: ru });
   }
   var sl = alerts.filter(function (a) { return a.slack; });
-  if (sl.length) slack(s, sl.map(function (a) { return ':croissant: *' + slackLink(a.r, a.title) + '*\n' + a.msg.replace(' Click to review sources.', '') + (a.slackMsg || ''); }).join('\n\n'));
+  if (sl.length) slack(s, sl.map(function (a) { return '*' + slackLink(a.r, a.title) + '*\n' + a.msg.replace(' Click to review sources.', '') + (a.slackMsg || ''); }).join('\n\n'));
 }
 function slackLink(r, text) { var t = String(text).replace(/[<>|]/g, ''); return r && r.url ? '<' + r.url + '|' + t + '>' : t; }
 async function slack(s, text) {
@@ -461,7 +461,7 @@ chrome.notifications.onClicked.addListener(async function (nid) {
 async function badge(snap) {
   if (snap.err === 'auth') {
     chrome.action.setBadgeText({ text: '?' }); chrome.action.setBadgeBackgroundColor({ color: '#6b6e74' });
-    chrome.action.setTitle({ title: 'Croissant\nOpen GOAL admin in Chrome to reconnect' }); return;
+    chrome.action.setTitle({ title: 'ASM CRM\nOpen GOAL admin in Chrome to reconnect' }); return;
   }
   var live = snap.rows.filter(function (r) { return !r.snoozed; });
   var n100 = live.filter(function (r) { return r.pct >= 100; }).length;
@@ -471,7 +471,7 @@ async function badge(snap) {
   else if (nf) { chrome.action.setBadgeText({ text: '!' }); chrome.action.setBadgeBackgroundColor({ color: '#e0a93b' }); }
   else chrome.action.setBadgeText({ text: '' });
   if (chrome.action.setBadgeTextColor) chrome.action.setBadgeTextColor({ color: '#ffffff' });
-  chrome.action.setTitle({ title: 'Croissant\n' + n100 + ' at 100%+ · ' + n75 + ' at 75-99% · ' + nf + ' flagged\nChecked ' + clock(new Date(snap.at)) });
+  chrome.action.setTitle({ title: 'ASM CRM\n' + n100 + ' at 100%+ · ' + n75 + ' at 75-99% · ' + nf + ' flagged\nChecked ' + clock(new Date(snap.at)) });
 }
 
 // ---------- 5pm recap ----------
@@ -504,7 +504,7 @@ async function maybeDigest(snap, s) {
   if (zero.length) detail.push('*No spend:* ' + zero.map(function (r) { return slackLink(r, short(r.name)); }).join(', '));
   if (under.length) detail.push('*Underpacing:* ' + under.map(function (r) { return slackLink(r, short(r.name)); }).join(', '));
   if (cv.length) detail.push('*Conversion drops:* ' + cv.map(function (r) { return slackLink(r, short(r.name)); }).join(', '));
-  slack(s, ':croissant: *Croissant recap, ' + clock(now) + '*\n' + lines.join('\n') + (detail.length ? '\n\n' + detail.join('\n') : ''));
+  slack(s, '*ASM CRM recap, ' + clock(now) + '*\n' + lines.join('\n') + (detail.length ? '\n\n' + detail.join('\n') : ''));
 }
 
 // ---------- daily budget snapshot ----------
@@ -766,8 +766,8 @@ async function fail(err, prev) {
     var day = dayStr(GOAL_TZ), w = (await get('authWarned')).authWarned;
     if (w !== day) {
       await set({ authWarned: day });
-      notify('auth:' + Date.now(), 'Croissant needs GOAL', 'Open the GOAL admin dashboard in Chrome once so alerts can resume.');
-      slack(await settings(), ':croissant: Croissant lost its GOAL sign-in. Open the GOAL admin dashboard in Chrome once so alerts can resume.');
+      notify('auth:' + Date.now(), 'ASM CRM needs GOAL', 'Open the GOAL admin dashboard in Chrome once so alerts can resume.');
+      slack(await settings(), 'ASM CRM lost its GOAL sign-in. Open the GOAL admin dashboard in Chrome once so alerts can resume.');
     }
   }
   return snap;
@@ -836,12 +836,12 @@ chrome.runtime.onMessage.addListener(function (msg, sender, reply) {
       var okd = (out.results || []).filter(function (x) { return x.ok; });
       if (okd.length) {
         var snapA = (await get('snap')).snap, rowA = snapA && snapA.rows.find(function (r) { return String(r.id) === String(msg.acct); });
-        slack(await settings(), ':croissant: *Raised bids for ' + slackLink(rowA, rowA ? short(rowA.name) : '#' + msg.acct) + '* (you approved)\n' + okd.map(function (x) { return x.campName + ' / ' + x.name + ': ' + x.from + '% to ' + x.to + '%' + (x.verified ? '' : ' (not yet confirmed)'); }).join('\n'));
+        slack(await settings(), '*Raised bids for ' + slackLink(rowA, rowA ? short(rowA.name) : '#' + msg.acct) + '* (you approved)\n' + okd.map(function (x) { return x.campName + ' / ' + x.name + ': ' + x.from + '% to ' + x.to + '%' + (x.verified ? '' : ' (not yet confirmed)'); }).join('\n'));
       }
       return reply(out);
     }
     if (msg.type === 'slackTest') {
-      var ok = await slack(Object.assign(await settings(), { slackOn: true, slackUrl: msg.url }), ':croissant: Croissant is connected. Budget caps, flags and the 5pm recap will post here.');
+      var ok = await slack(Object.assign(await settings(), { slackOn: true, slackUrl: msg.url }), 'ASM CRM is connected. Budget caps, flags and the 5pm recap will post here.');
       return reply({ ok: ok });
     }
     if (msg.type === 'refresh') { await poll(!!msg.force); var g2 = await get('snap'); return reply({ snap: g2.snap, settings: await settings() }); }
